@@ -1,0 +1,11 @@
+A = 3
+3+ 4
+
+if A:
+    pass
+
+def exemple():
+    pass
+
+class EXEMPLO:
+    pass

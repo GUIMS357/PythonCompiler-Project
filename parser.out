@@ -1,0 +1,1583 @@
+Grammar:
+
+Rule 0     S' -> statement
+Rule 1     statement -> expr
+Rule 2     statement -> ID ASSIGN expr
+Rule 3     expr -> ID
+Rule 4     expr -> factor
+Rule 5     expr -> expr AND expr  [precedence=left, level=1]
+Rule 6     expr -> expr OR expr  [precedence=left, level=1]
+Rule 7     expr -> PASS
+Rule 8     expr -> CLASS ID COLON
+Rule 9     expr -> CLASS ID factor COLON
+Rule 10    expr -> DEF ID factor COLON
+Rule 11    expr -> WHILE TRUE COLON
+Rule 12    expr -> WHILE ID COLON
+Rule 13    expr -> FOR ID IN ID COLON
+Rule 14    expr -> IF ID COLON
+Rule 15    expr -> IF expr COLON
+Rule 16    expr -> IF ID IN ID COLON expr
+Rule 17    expr -> COLON
+Rule 18    expr -> expr MAIOREQUALS expr  [precedence=left, level=2]
+Rule 19    expr -> expr MENOREQUALS expr  [precedence=left, level=2]
+Rule 20    expr -> expr MAIOR expr  [precedence=left, level=2]
+Rule 21    expr -> expr MENOR expr  [precedence=left, level=2]
+Rule 22    expr -> expr DIVIDE expr  [precedence=left, level=4]
+Rule 23    expr -> expr TIMES expr  [precedence=left, level=4]
+Rule 24    expr -> expr MINUS expr  [precedence=left, level=3]
+Rule 25    expr -> expr PLUS expr  [precedence=left, level=3]
+Rule 26    expr -> NUMBER
+Rule 27    sumequals -> ID SUMEQUALS expr
+Rule 28    minusequals -> ID MINUSEQUALS expr
+Rule 29    factor -> LPAREN expr RPAREN
+
+Unused terminals:
+
+    CONTINUE
+    ELIF
+    RCOLC
+    NORMALSTRING
+    EOF
+    DIVIDEEQUALS
+    NOT
+    LBRACE
+    ELSE
+    WHITESPACE
+    LCOLC
+    IMPORT
+    BREAK
+    EQUALS
+    FALSE
+    NONE
+    RBRACE
+    NAME
+    FROM
+    DIFF
+    TIMESEQUALS
+    RETURN
+
+Terminals, with rules where they appear:
+
+AND                  : 5
+ASSIGN               : 2
+BREAK                : 
+CLASS                : 8 9
+COLON                : 8 9 10 11 12 13 14 15 16 17
+CONTINUE             : 
+DEF                  : 10
+DIFF                 : 
+DIVIDE               : 22
+DIVIDEEQUALS         : 
+ELIF                 : 
+ELSE                 : 
+EOF                  : 
+EQUALS               : 
+FALSE                : 
+FOR                  : 13
+FROM                 : 
+ID                   : 2 3 8 9 10 12 13 13 14 16 16 27 28
+IF                   : 14 15 16
+IMPORT               : 
+IN                   : 13 16
+LBRACE               : 
+LCOLC                : 
+LPAREN               : 29
+MAIOR                : 20
+MAIOREQUALS          : 18
+MENOR                : 21
+MENOREQUALS          : 19
+MINUS                : 24
+MINUSEQUALS          : 28
+NAME                 : 
+NONE                 : 
+NORMALSTRING         : 
+NOT                  : 
+NUMBER               : 26
+OR                   : 6
+PASS                 : 7
+PLUS                 : 25
+RBRACE               : 
+RCOLC                : 
+RETURN               : 
+RPAREN               : 29
+SUMEQUALS            : 27
+TIMES                : 23
+TIMESEQUALS          : 
+TRUE                 : 11
+WHILE                : 11 12
+WHITESPACE           : 
+error                : 
+
+Nonterminals, with rules where they appear:
+
+expr                 : 1 2 5 5 6 6 15 16 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 27 28 29
+factor               : 4 9 10
+minusequals          : 
+statement            : 0
+sumequals            : 
+
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . expr
+    (2) statement -> . ID ASSIGN expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 3
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    statement                      shift and go to state 1
+    expr                           shift and go to state 2
+    factor                         shift and go to state 4
+
+state 1
+
+    (0) S' -> statement .
+
+
+state 2
+
+    (1) statement -> expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    $end            reduce using rule 1 (statement -> expr .)
+    AND             shift and go to state 14
+    OR              shift and go to state 15
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 3
+
+    (2) statement -> ID . ASSIGN expr
+    (3) expr -> ID .
+    ASSIGN          shift and go to state 24
+    AND             reduce using rule 3 (expr -> ID .)
+    OR              reduce using rule 3 (expr -> ID .)
+    MAIOREQUALS     reduce using rule 3 (expr -> ID .)
+    MENOREQUALS     reduce using rule 3 (expr -> ID .)
+    MAIOR           reduce using rule 3 (expr -> ID .)
+    MENOR           reduce using rule 3 (expr -> ID .)
+    DIVIDE          reduce using rule 3 (expr -> ID .)
+    TIMES           reduce using rule 3 (expr -> ID .)
+    MINUS           reduce using rule 3 (expr -> ID .)
+    PLUS            reduce using rule 3 (expr -> ID .)
+    $end            reduce using rule 3 (expr -> ID .)
+
+
+state 4
+
+    (4) expr -> factor .
+    AND             reduce using rule 4 (expr -> factor .)
+    OR              reduce using rule 4 (expr -> factor .)
+    MAIOREQUALS     reduce using rule 4 (expr -> factor .)
+    MENOREQUALS     reduce using rule 4 (expr -> factor .)
+    MAIOR           reduce using rule 4 (expr -> factor .)
+    MENOR           reduce using rule 4 (expr -> factor .)
+    DIVIDE          reduce using rule 4 (expr -> factor .)
+    TIMES           reduce using rule 4 (expr -> factor .)
+    MINUS           reduce using rule 4 (expr -> factor .)
+    PLUS            reduce using rule 4 (expr -> factor .)
+    $end            reduce using rule 4 (expr -> factor .)
+    COLON           reduce using rule 4 (expr -> factor .)
+    RPAREN          reduce using rule 4 (expr -> factor .)
+
+
+state 5
+
+    (7) expr -> PASS .
+    AND             reduce using rule 7 (expr -> PASS .)
+    OR              reduce using rule 7 (expr -> PASS .)
+    MAIOREQUALS     reduce using rule 7 (expr -> PASS .)
+    MENOREQUALS     reduce using rule 7 (expr -> PASS .)
+    MAIOR           reduce using rule 7 (expr -> PASS .)
+    MENOR           reduce using rule 7 (expr -> PASS .)
+    DIVIDE          reduce using rule 7 (expr -> PASS .)
+    TIMES           reduce using rule 7 (expr -> PASS .)
+    MINUS           reduce using rule 7 (expr -> PASS .)
+    PLUS            reduce using rule 7 (expr -> PASS .)
+    $end            reduce using rule 7 (expr -> PASS .)
+    COLON           reduce using rule 7 (expr -> PASS .)
+    RPAREN          reduce using rule 7 (expr -> PASS .)
+
+
+state 6
+
+    (8) expr -> CLASS . ID COLON
+    (9) expr -> CLASS . ID factor COLON
+    ID              shift and go to state 25
+
+
+state 7
+
+    (17) expr -> COLON .
+    AND             reduce using rule 17 (expr -> COLON .)
+    OR              reduce using rule 17 (expr -> COLON .)
+    MAIOREQUALS     reduce using rule 17 (expr -> COLON .)
+    MENOREQUALS     reduce using rule 17 (expr -> COLON .)
+    MAIOR           reduce using rule 17 (expr -> COLON .)
+    MENOR           reduce using rule 17 (expr -> COLON .)
+    DIVIDE          reduce using rule 17 (expr -> COLON .)
+    TIMES           reduce using rule 17 (expr -> COLON .)
+    MINUS           reduce using rule 17 (expr -> COLON .)
+    PLUS            reduce using rule 17 (expr -> COLON .)
+    $end            reduce using rule 17 (expr -> COLON .)
+    COLON           reduce using rule 17 (expr -> COLON .)
+    RPAREN          reduce using rule 17 (expr -> COLON .)
+
+
+state 8
+
+    (10) expr -> DEF . ID factor COLON
+    ID              shift and go to state 26
+
+
+state 9
+
+    (11) expr -> WHILE . TRUE COLON
+    (12) expr -> WHILE . ID COLON
+    TRUE            shift and go to state 27
+    ID              shift and go to state 28
+
+
+state 10
+
+    (13) expr -> FOR . ID IN ID COLON
+    ID              shift and go to state 29
+
+
+state 11
+
+    (14) expr -> IF . ID COLON
+    (15) expr -> IF . expr COLON
+    (16) expr -> IF . ID IN ID COLON expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 30
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 31
+    factor                         shift and go to state 4
+
+state 12
+
+    (26) expr -> NUMBER .
+    AND             reduce using rule 26 (expr -> NUMBER .)
+    OR              reduce using rule 26 (expr -> NUMBER .)
+    MAIOREQUALS     reduce using rule 26 (expr -> NUMBER .)
+    MENOREQUALS     reduce using rule 26 (expr -> NUMBER .)
+    MAIOR           reduce using rule 26 (expr -> NUMBER .)
+    MENOR           reduce using rule 26 (expr -> NUMBER .)
+    DIVIDE          reduce using rule 26 (expr -> NUMBER .)
+    TIMES           reduce using rule 26 (expr -> NUMBER .)
+    MINUS           reduce using rule 26 (expr -> NUMBER .)
+    PLUS            reduce using rule 26 (expr -> NUMBER .)
+    $end            reduce using rule 26 (expr -> NUMBER .)
+    COLON           reduce using rule 26 (expr -> NUMBER .)
+    RPAREN          reduce using rule 26 (expr -> NUMBER .)
+
+
+state 13
+
+    (29) factor -> LPAREN . expr RPAREN
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 32
+    factor                         shift and go to state 4
+
+state 14
+
+    (5) expr -> expr AND . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 34
+    factor                         shift and go to state 4
+
+state 15
+
+    (6) expr -> expr OR . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 35
+    factor                         shift and go to state 4
+
+state 16
+
+    (18) expr -> expr MAIOREQUALS . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 36
+    factor                         shift and go to state 4
+
+state 17
+
+    (19) expr -> expr MENOREQUALS . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 37
+    factor                         shift and go to state 4
+
+state 18
+
+    (20) expr -> expr MAIOR . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 38
+    factor                         shift and go to state 4
+
+state 19
+
+    (21) expr -> expr MENOR . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 39
+    factor                         shift and go to state 4
+
+state 20
+
+    (22) expr -> expr DIVIDE . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 40
+    factor                         shift and go to state 4
+
+state 21
+
+    (23) expr -> expr TIMES . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 41
+    factor                         shift and go to state 4
+
+state 22
+
+    (24) expr -> expr MINUS . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 42
+    factor                         shift and go to state 4
+
+state 23
+
+    (25) expr -> expr PLUS . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 43
+    factor                         shift and go to state 4
+
+state 24
+
+    (2) statement -> ID ASSIGN . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 44
+    factor                         shift and go to state 4
+
+state 25
+
+    (8) expr -> CLASS ID . COLON
+    (9) expr -> CLASS ID . factor COLON
+    (29) factor -> . LPAREN expr RPAREN
+    COLON           shift and go to state 45
+    LPAREN          shift and go to state 13
+
+    factor                         shift and go to state 46
+
+state 26
+
+    (10) expr -> DEF ID . factor COLON
+    (29) factor -> . LPAREN expr RPAREN
+    LPAREN          shift and go to state 13
+
+    factor                         shift and go to state 47
+
+state 27
+
+    (11) expr -> WHILE TRUE . COLON
+    COLON           shift and go to state 48
+
+
+state 28
+
+    (12) expr -> WHILE ID . COLON
+    COLON           shift and go to state 49
+
+
+state 29
+
+    (13) expr -> FOR ID . IN ID COLON
+    IN              shift and go to state 50
+
+
+state 30
+
+    (14) expr -> IF ID . COLON
+    (16) expr -> IF ID . IN ID COLON expr
+    (3) expr -> ID .
+  ! shift/reduce conflict for COLON resolved as shift
+    COLON           shift and go to state 51
+    IN              shift and go to state 52
+    AND             reduce using rule 3 (expr -> ID .)
+    OR              reduce using rule 3 (expr -> ID .)
+    MAIOREQUALS     reduce using rule 3 (expr -> ID .)
+    MENOREQUALS     reduce using rule 3 (expr -> ID .)
+    MAIOR           reduce using rule 3 (expr -> ID .)
+    MENOR           reduce using rule 3 (expr -> ID .)
+    DIVIDE          reduce using rule 3 (expr -> ID .)
+    TIMES           reduce using rule 3 (expr -> ID .)
+    MINUS           reduce using rule 3 (expr -> ID .)
+    PLUS            reduce using rule 3 (expr -> ID .)
+
+
+state 31
+
+    (15) expr -> IF expr . COLON
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    COLON           shift and go to state 53
+    AND             shift and go to state 14
+    OR              shift and go to state 15
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 32
+
+    (29) factor -> LPAREN expr . RPAREN
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 54
+    AND             shift and go to state 14
+    OR              shift and go to state 15
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 33
+
+    (3) expr -> ID .
+    RPAREN          reduce using rule 3 (expr -> ID .)
+    AND             reduce using rule 3 (expr -> ID .)
+    OR              reduce using rule 3 (expr -> ID .)
+    MAIOREQUALS     reduce using rule 3 (expr -> ID .)
+    MENOREQUALS     reduce using rule 3 (expr -> ID .)
+    MAIOR           reduce using rule 3 (expr -> ID .)
+    MENOR           reduce using rule 3 (expr -> ID .)
+    DIVIDE          reduce using rule 3 (expr -> ID .)
+    TIMES           reduce using rule 3 (expr -> ID .)
+    MINUS           reduce using rule 3 (expr -> ID .)
+    PLUS            reduce using rule 3 (expr -> ID .)
+    $end            reduce using rule 3 (expr -> ID .)
+    COLON           reduce using rule 3 (expr -> ID .)
+
+
+state 34
+
+    (5) expr -> expr AND expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 5 (expr -> expr AND expr .)
+    OR              reduce using rule 5 (expr -> expr AND expr .)
+    $end            reduce using rule 5 (expr -> expr AND expr .)
+    COLON           reduce using rule 5 (expr -> expr AND expr .)
+    RPAREN          reduce using rule 5 (expr -> expr AND expr .)
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 35
+
+    (6) expr -> expr OR expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 6 (expr -> expr OR expr .)
+    OR              reduce using rule 6 (expr -> expr OR expr .)
+    $end            reduce using rule 6 (expr -> expr OR expr .)
+    COLON           reduce using rule 6 (expr -> expr OR expr .)
+    RPAREN          reduce using rule 6 (expr -> expr OR expr .)
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 36
+
+    (18) expr -> expr MAIOREQUALS expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    OR              reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    MAIOREQUALS     reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    MENOREQUALS     reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    MAIOR           reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    MENOR           reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    $end            reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    COLON           reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    RPAREN          reduce using rule 18 (expr -> expr MAIOREQUALS expr .)
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 37
+
+    (19) expr -> expr MENOREQUALS expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    OR              reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    MAIOREQUALS     reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    MENOREQUALS     reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    MAIOR           reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    MENOR           reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    $end            reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    COLON           reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    RPAREN          reduce using rule 19 (expr -> expr MENOREQUALS expr .)
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 38
+
+    (20) expr -> expr MAIOR expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 20 (expr -> expr MAIOR expr .)
+    OR              reduce using rule 20 (expr -> expr MAIOR expr .)
+    MAIOREQUALS     reduce using rule 20 (expr -> expr MAIOR expr .)
+    MENOREQUALS     reduce using rule 20 (expr -> expr MAIOR expr .)
+    MAIOR           reduce using rule 20 (expr -> expr MAIOR expr .)
+    MENOR           reduce using rule 20 (expr -> expr MAIOR expr .)
+    $end            reduce using rule 20 (expr -> expr MAIOR expr .)
+    COLON           reduce using rule 20 (expr -> expr MAIOR expr .)
+    RPAREN          reduce using rule 20 (expr -> expr MAIOR expr .)
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 39
+
+    (21) expr -> expr MENOR expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 21 (expr -> expr MENOR expr .)
+    OR              reduce using rule 21 (expr -> expr MENOR expr .)
+    MAIOREQUALS     reduce using rule 21 (expr -> expr MENOR expr .)
+    MENOREQUALS     reduce using rule 21 (expr -> expr MENOR expr .)
+    MAIOR           reduce using rule 21 (expr -> expr MENOR expr .)
+    MENOR           reduce using rule 21 (expr -> expr MENOR expr .)
+    $end            reduce using rule 21 (expr -> expr MENOR expr .)
+    COLON           reduce using rule 21 (expr -> expr MENOR expr .)
+    RPAREN          reduce using rule 21 (expr -> expr MENOR expr .)
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 40
+
+    (22) expr -> expr DIVIDE expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 22 (expr -> expr DIVIDE expr .)
+    OR              reduce using rule 22 (expr -> expr DIVIDE expr .)
+    MAIOREQUALS     reduce using rule 22 (expr -> expr DIVIDE expr .)
+    MENOREQUALS     reduce using rule 22 (expr -> expr DIVIDE expr .)
+    MAIOR           reduce using rule 22 (expr -> expr DIVIDE expr .)
+    MENOR           reduce using rule 22 (expr -> expr DIVIDE expr .)
+    DIVIDE          reduce using rule 22 (expr -> expr DIVIDE expr .)
+    TIMES           reduce using rule 22 (expr -> expr DIVIDE expr .)
+    MINUS           reduce using rule 22 (expr -> expr DIVIDE expr .)
+    PLUS            reduce using rule 22 (expr -> expr DIVIDE expr .)
+    $end            reduce using rule 22 (expr -> expr DIVIDE expr .)
+    COLON           reduce using rule 22 (expr -> expr DIVIDE expr .)
+    RPAREN          reduce using rule 22 (expr -> expr DIVIDE expr .)
+
+
+state 41
+
+    (23) expr -> expr TIMES expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 23 (expr -> expr TIMES expr .)
+    OR              reduce using rule 23 (expr -> expr TIMES expr .)
+    MAIOREQUALS     reduce using rule 23 (expr -> expr TIMES expr .)
+    MENOREQUALS     reduce using rule 23 (expr -> expr TIMES expr .)
+    MAIOR           reduce using rule 23 (expr -> expr TIMES expr .)
+    MENOR           reduce using rule 23 (expr -> expr TIMES expr .)
+    DIVIDE          reduce using rule 23 (expr -> expr TIMES expr .)
+    TIMES           reduce using rule 23 (expr -> expr TIMES expr .)
+    MINUS           reduce using rule 23 (expr -> expr TIMES expr .)
+    PLUS            reduce using rule 23 (expr -> expr TIMES expr .)
+    $end            reduce using rule 23 (expr -> expr TIMES expr .)
+    COLON           reduce using rule 23 (expr -> expr TIMES expr .)
+    RPAREN          reduce using rule 23 (expr -> expr TIMES expr .)
+
+
+state 42
+
+    (24) expr -> expr MINUS expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 24 (expr -> expr MINUS expr .)
+    OR              reduce using rule 24 (expr -> expr MINUS expr .)
+    MAIOREQUALS     reduce using rule 24 (expr -> expr MINUS expr .)
+    MENOREQUALS     reduce using rule 24 (expr -> expr MINUS expr .)
+    MAIOR           reduce using rule 24 (expr -> expr MINUS expr .)
+    MENOR           reduce using rule 24 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 24 (expr -> expr MINUS expr .)
+    PLUS            reduce using rule 24 (expr -> expr MINUS expr .)
+    $end            reduce using rule 24 (expr -> expr MINUS expr .)
+    COLON           reduce using rule 24 (expr -> expr MINUS expr .)
+    RPAREN          reduce using rule 24 (expr -> expr MINUS expr .)
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+
+
+state 43
+
+    (25) expr -> expr PLUS expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    AND             reduce using rule 25 (expr -> expr PLUS expr .)
+    OR              reduce using rule 25 (expr -> expr PLUS expr .)
+    MAIOREQUALS     reduce using rule 25 (expr -> expr PLUS expr .)
+    MENOREQUALS     reduce using rule 25 (expr -> expr PLUS expr .)
+    MAIOR           reduce using rule 25 (expr -> expr PLUS expr .)
+    MENOR           reduce using rule 25 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 25 (expr -> expr PLUS expr .)
+    PLUS            reduce using rule 25 (expr -> expr PLUS expr .)
+    $end            reduce using rule 25 (expr -> expr PLUS expr .)
+    COLON           reduce using rule 25 (expr -> expr PLUS expr .)
+    RPAREN          reduce using rule 25 (expr -> expr PLUS expr .)
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+
+
+state 44
+
+    (2) statement -> ID ASSIGN expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+    $end            reduce using rule 2 (statement -> ID ASSIGN expr .)
+    AND             shift and go to state 14
+    OR              shift and go to state 15
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+state 45
+
+    (8) expr -> CLASS ID COLON .
+    AND             reduce using rule 8 (expr -> CLASS ID COLON .)
+    OR              reduce using rule 8 (expr -> CLASS ID COLON .)
+    MAIOREQUALS     reduce using rule 8 (expr -> CLASS ID COLON .)
+    MENOREQUALS     reduce using rule 8 (expr -> CLASS ID COLON .)
+    MAIOR           reduce using rule 8 (expr -> CLASS ID COLON .)
+    MENOR           reduce using rule 8 (expr -> CLASS ID COLON .)
+    DIVIDE          reduce using rule 8 (expr -> CLASS ID COLON .)
+    TIMES           reduce using rule 8 (expr -> CLASS ID COLON .)
+    MINUS           reduce using rule 8 (expr -> CLASS ID COLON .)
+    PLUS            reduce using rule 8 (expr -> CLASS ID COLON .)
+    $end            reduce using rule 8 (expr -> CLASS ID COLON .)
+    COLON           reduce using rule 8 (expr -> CLASS ID COLON .)
+    RPAREN          reduce using rule 8 (expr -> CLASS ID COLON .)
+
+
+state 46
+
+    (9) expr -> CLASS ID factor . COLON
+    COLON           shift and go to state 55
+
+
+state 47
+
+    (10) expr -> DEF ID factor . COLON
+    COLON           shift and go to state 56
+
+
+state 48
+
+    (11) expr -> WHILE TRUE COLON .
+    AND             reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    OR              reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    MAIOREQUALS     reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    MENOREQUALS     reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    MAIOR           reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    MENOR           reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    DIVIDE          reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    TIMES           reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    MINUS           reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    PLUS            reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    $end            reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    COLON           reduce using rule 11 (expr -> WHILE TRUE COLON .)
+    RPAREN          reduce using rule 11 (expr -> WHILE TRUE COLON .)
+
+
+state 49
+
+    (12) expr -> WHILE ID COLON .
+    AND             reduce using rule 12 (expr -> WHILE ID COLON .)
+    OR              reduce using rule 12 (expr -> WHILE ID COLON .)
+    MAIOREQUALS     reduce using rule 12 (expr -> WHILE ID COLON .)
+    MENOREQUALS     reduce using rule 12 (expr -> WHILE ID COLON .)
+    MAIOR           reduce using rule 12 (expr -> WHILE ID COLON .)
+    MENOR           reduce using rule 12 (expr -> WHILE ID COLON .)
+    DIVIDE          reduce using rule 12 (expr -> WHILE ID COLON .)
+    TIMES           reduce using rule 12 (expr -> WHILE ID COLON .)
+    MINUS           reduce using rule 12 (expr -> WHILE ID COLON .)
+    PLUS            reduce using rule 12 (expr -> WHILE ID COLON .)
+    $end            reduce using rule 12 (expr -> WHILE ID COLON .)
+    COLON           reduce using rule 12 (expr -> WHILE ID COLON .)
+    RPAREN          reduce using rule 12 (expr -> WHILE ID COLON .)
+
+
+state 50
+
+    (13) expr -> FOR ID IN . ID COLON
+    ID              shift and go to state 57
+
+
+state 51
+
+    (14) expr -> IF ID COLON .
+    AND             reduce using rule 14 (expr -> IF ID COLON .)
+    OR              reduce using rule 14 (expr -> IF ID COLON .)
+    MAIOREQUALS     reduce using rule 14 (expr -> IF ID COLON .)
+    MENOREQUALS     reduce using rule 14 (expr -> IF ID COLON .)
+    MAIOR           reduce using rule 14 (expr -> IF ID COLON .)
+    MENOR           reduce using rule 14 (expr -> IF ID COLON .)
+    DIVIDE          reduce using rule 14 (expr -> IF ID COLON .)
+    TIMES           reduce using rule 14 (expr -> IF ID COLON .)
+    MINUS           reduce using rule 14 (expr -> IF ID COLON .)
+    PLUS            reduce using rule 14 (expr -> IF ID COLON .)
+    $end            reduce using rule 14 (expr -> IF ID COLON .)
+    COLON           reduce using rule 14 (expr -> IF ID COLON .)
+    RPAREN          reduce using rule 14 (expr -> IF ID COLON .)
+
+
+state 52
+
+    (16) expr -> IF ID IN . ID COLON expr
+    ID              shift and go to state 58
+
+
+state 53
+
+    (15) expr -> IF expr COLON .
+    AND             reduce using rule 15 (expr -> IF expr COLON .)
+    OR              reduce using rule 15 (expr -> IF expr COLON .)
+    MAIOREQUALS     reduce using rule 15 (expr -> IF expr COLON .)
+    MENOREQUALS     reduce using rule 15 (expr -> IF expr COLON .)
+    MAIOR           reduce using rule 15 (expr -> IF expr COLON .)
+    MENOR           reduce using rule 15 (expr -> IF expr COLON .)
+    DIVIDE          reduce using rule 15 (expr -> IF expr COLON .)
+    TIMES           reduce using rule 15 (expr -> IF expr COLON .)
+    MINUS           reduce using rule 15 (expr -> IF expr COLON .)
+    PLUS            reduce using rule 15 (expr -> IF expr COLON .)
+    $end            reduce using rule 15 (expr -> IF expr COLON .)
+    COLON           reduce using rule 15 (expr -> IF expr COLON .)
+    RPAREN          reduce using rule 15 (expr -> IF expr COLON .)
+
+
+state 54
+
+    (29) factor -> LPAREN expr RPAREN .
+    AND             reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    OR              reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    MAIOREQUALS     reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    MENOREQUALS     reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    MAIOR           reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    MENOR           reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    DIVIDE          reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    TIMES           reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    PLUS            reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    $end            reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    COLON           reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 29 (factor -> LPAREN expr RPAREN .)
+
+
+state 55
+
+    (9) expr -> CLASS ID factor COLON .
+    AND             reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    OR              reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    MAIOREQUALS     reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    MENOREQUALS     reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    MAIOR           reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    MENOR           reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    DIVIDE          reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    TIMES           reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    MINUS           reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    PLUS            reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    $end            reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    COLON           reduce using rule 9 (expr -> CLASS ID factor COLON .)
+    RPAREN          reduce using rule 9 (expr -> CLASS ID factor COLON .)
+
+
+state 56
+
+    (10) expr -> DEF ID factor COLON .
+    AND             reduce using rule 10 (expr -> DEF ID factor COLON .)
+    OR              reduce using rule 10 (expr -> DEF ID factor COLON .)
+    MAIOREQUALS     reduce using rule 10 (expr -> DEF ID factor COLON .)
+    MENOREQUALS     reduce using rule 10 (expr -> DEF ID factor COLON .)
+    MAIOR           reduce using rule 10 (expr -> DEF ID factor COLON .)
+    MENOR           reduce using rule 10 (expr -> DEF ID factor COLON .)
+    DIVIDE          reduce using rule 10 (expr -> DEF ID factor COLON .)
+    TIMES           reduce using rule 10 (expr -> DEF ID factor COLON .)
+    MINUS           reduce using rule 10 (expr -> DEF ID factor COLON .)
+    PLUS            reduce using rule 10 (expr -> DEF ID factor COLON .)
+    $end            reduce using rule 10 (expr -> DEF ID factor COLON .)
+    COLON           reduce using rule 10 (expr -> DEF ID factor COLON .)
+    RPAREN          reduce using rule 10 (expr -> DEF ID factor COLON .)
+
+
+state 57
+
+    (13) expr -> FOR ID IN ID . COLON
+    COLON           shift and go to state 59
+
+
+state 58
+
+    (16) expr -> IF ID IN ID . COLON expr
+    COLON           shift and go to state 60
+
+
+state 59
+
+    (13) expr -> FOR ID IN ID COLON .
+    AND             reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    OR              reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    MAIOREQUALS     reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    MENOREQUALS     reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    MAIOR           reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    MENOR           reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    DIVIDE          reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    TIMES           reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    MINUS           reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    PLUS            reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    $end            reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    COLON           reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+    RPAREN          reduce using rule 13 (expr -> FOR ID IN ID COLON .)
+
+
+state 60
+
+    (16) expr -> IF ID IN ID COLON . expr
+    (3) expr -> . ID
+    (4) expr -> . factor
+    (5) expr -> . expr AND expr
+    (6) expr -> . expr OR expr
+    (7) expr -> . PASS
+    (8) expr -> . CLASS ID COLON
+    (9) expr -> . CLASS ID factor COLON
+    (10) expr -> . DEF ID factor COLON
+    (11) expr -> . WHILE TRUE COLON
+    (12) expr -> . WHILE ID COLON
+    (13) expr -> . FOR ID IN ID COLON
+    (14) expr -> . IF ID COLON
+    (15) expr -> . IF expr COLON
+    (16) expr -> . IF ID IN ID COLON expr
+    (17) expr -> . COLON
+    (18) expr -> . expr MAIOREQUALS expr
+    (19) expr -> . expr MENOREQUALS expr
+    (20) expr -> . expr MAIOR expr
+    (21) expr -> . expr MENOR expr
+    (22) expr -> . expr DIVIDE expr
+    (23) expr -> . expr TIMES expr
+    (24) expr -> . expr MINUS expr
+    (25) expr -> . expr PLUS expr
+    (26) expr -> . NUMBER
+    (29) factor -> . LPAREN expr RPAREN
+    ID              shift and go to state 33
+    PASS            shift and go to state 5
+    CLASS           shift and go to state 6
+    DEF             shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    IF              shift and go to state 11
+    COLON           shift and go to state 7
+    NUMBER          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+    expr                           shift and go to state 61
+    factor                         shift and go to state 4
+
+state 61
+
+    (16) expr -> IF ID IN ID COLON expr .
+    (5) expr -> expr . AND expr
+    (6) expr -> expr . OR expr
+    (18) expr -> expr . MAIOREQUALS expr
+    (19) expr -> expr . MENOREQUALS expr
+    (20) expr -> expr . MAIOR expr
+    (21) expr -> expr . MENOR expr
+    (22) expr -> expr . DIVIDE expr
+    (23) expr -> expr . TIMES expr
+    (24) expr -> expr . MINUS expr
+    (25) expr -> expr . PLUS expr
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for MAIOREQUALS resolved as shift
+  ! shift/reduce conflict for MENOREQUALS resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 16 (expr -> IF ID IN ID COLON expr .)
+    COLON           reduce using rule 16 (expr -> IF ID IN ID COLON expr .)
+    RPAREN          reduce using rule 16 (expr -> IF ID IN ID COLON expr .)
+    AND             shift and go to state 14
+    OR              shift and go to state 15
+    MAIOREQUALS     shift and go to state 16
+    MENOREQUALS     shift and go to state 17
+    MAIOR           shift and go to state 18
+    MENOR           shift and go to state 19
+    DIVIDE          shift and go to state 20
+    TIMES           shift and go to state 21
+    MINUS           shift and go to state 22
+    PLUS            shift and go to state 23
+
+
+Conflicts:
+
+shift/reduce conflict for COLON in state 30 resolved as shift
+shift/reduce conflict for AND in state 61 resolved as shift
+shift/reduce conflict for OR in state 61 resolved as shift
+shift/reduce conflict for MAIOREQUALS in state 61 resolved as shift
+shift/reduce conflict for MENOREQUALS in state 61 resolved as shift
+shift/reduce conflict for MAIOR in state 61 resolved as shift
+shift/reduce conflict for MENOR in state 61 resolved as shift
+shift/reduce conflict for DIVIDE in state 61 resolved as shift
+shift/reduce conflict for TIMES in state 61 resolved as shift
+shift/reduce conflict for MINUS in state 61 resolved as shift
+shift/reduce conflict for PLUS in state 61 resolved as shift
